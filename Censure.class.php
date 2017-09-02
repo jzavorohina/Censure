@@ -12,9 +12,9 @@
  *
  * Some examples:
  *
- * Censure::clean('Original phrase with abusive words');
  * Censure::is_bad('Original phrase with abusive words');
  * Censure::replace('Original phrase with abusive words');
+ * Censure::cleanPost('unlimited number of arguments to match indexes in $_POST to clean'); 
  *
  */
  
@@ -24,9 +24,6 @@ class Censure {
 
 	/**
 	 * Set array of abusive words
-	 *
-	 * @param string $pattern - saving array of abusive words 
-	 * @return string - 
 	 */
 	 
 	public static $patterns = array(
@@ -66,7 +63,7 @@ class Censure {
 	);
 	 
 	/**
-	 * Replaces abusive words from string
+	 * Replace abusive words from string
 	 *
 	 * @param string $string - original text	 
 	 * @return string - cleaned text
@@ -74,20 +71,18 @@ class Censure {
 	 
 	 public static function replace ( $string ) {
 		$words = explode(' ',$string);
-		//var_dump($words);
 		foreach ($words as $key=>$w){
 			foreach (self::$patterns as $p) {
 				if(preg_match(self::prepare($p),$w)) $words[$key] = self::REPLACEMENT;
 			}
 		}
-		//var_dump($words);
 		return implode(' ',$words);
 	}
 
 	/**
-	 * Clean indexes in $_POST from spam 
+	 * Clean indexes in $_POST from abusive words 
 	 *
-	 * @param string|array $data - indexes in $_POST
+	 * @param mixed  $data,... unlimited number of arguments to match indexes in $_POST to clean
 	 * @return void
 	 */
 	public static function cleanPost () {
