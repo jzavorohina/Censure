@@ -1,5 +1,5 @@
 # censure
-Filter abusive words in Russian.
+Сensure filter against dirty russian words
 
 ### Some examples
 ```php
