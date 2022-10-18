@@ -8,7 +8,7 @@
  *  
  * Dirty words - filter.
  * 
- * Filter out vulgar, obscene, profane words in Russian texts.
+ * Filter out vulgar, obscene, profane words in Russian/English texts.
  * 
  * Key features:
  * - Fully covers the profanity words.
@@ -25,10 +25,10 @@ class Censure {
 	const REPLACEMENT = '***';
 
 	/**
-	 * Set array of abusive words
+	 * Set array of russian abusive words
 	 */
 	 
-	public static $patterns = array(
+	public static $patterns_ru = array(
 	    'анал[а-я]+|анус|анус[а-я]+',
 		'бзд[а-я]+','бля|бля[а-я]+',
 		'вафел|вафлер|вафлёр|вафлер[а-я]+|вафлёр[а-я]+|вафле[а-я]+|вафлист|вафли[а-я]+|вафлист[а-я]+',
@@ -53,12 +53,12 @@ class Censure {
 		'манд[а-я]+|манда|монда|монда[а-я]+','маразматик','мегера','мент','мерзавец','мразь',
 		'мудак|мудило|мудил[а-я]+|мудозвон|мудох[а-я]+',
 		'наёб[а-я]+|наеб[а-я]+','ничтожество', 
-		'обалдуй','обосранец|обосра[а-я]+','образина','остолоп','отребье','отродье','охуе[а-я]+',
+		'обалдуй','обосранец|обосра[а-я]+','образина','остолоп','отребье|отрепье','отродье','охуе[а-я]+',
 		'падаль|падла','паскуда|паскудный','потаскуха','паразит','пентюх','перечница','пизд[ая]+|пизда|[а-я]+пиз[а-я]+',
 		'подонок','подстилка','позорник','порнуха','полудурок','потаскун|потаскуха','придурок','прихвостень','прорва',
 		'пройдоха','проститутка','прохвост','прохиндей','проходимец','пустобрёх|пустозвон|пустомеля','пьянчуга|пьянь',
 		'разъеб[а-я]+','раздолбай','распизд[а-я]+','рвань','ренегат','рогоносец',
-		'сволочь','соси|соса[а-я]+','срать','ссать','стерва','сука|сукин|сучка',
+		'сброд','сволочь','соси|соса[а-я]+','срать','ссать','стерва','сука|сукин|сучка',
 		'тварь','тёлка','толстозадый','тошнотворное','трах[ая]+','трепотня','тряпка','тупица|тупоголовый|туполобый|тупоумный','тягомотину',
 		'ублюдок','ублюд[а-я]+','уеб[а-я]+','уебище','урод','урод[а-я]+',
 		'фаллос','фефела|фефёла|фефёлка','фофан','фуфло|фуфл[а-я]+',
@@ -67,6 +67,31 @@ class Censure {
 		'целка','черножопый|чернозадый|черномазый','чинодрал','чмо','чурбан','чучело',
 		'шалава','шалашовка','шантрапа','шаромыжник','шваль','шизоид','шлюха|шлюш[а-я]+','шушера',
 		'щекотильник','эрекция','юлда|юлдак','ядрёна|ядрена','ядрить'
+	);
+
+	/**
+	 * Set array of english abusive words
+	 */
+
+	public static $patterns_en = array(
+		'ass|arse','asshole|arsehole',
+		'bastard','berk','bitch|bitch[a-z]+','blighter','blimey','bollocks','bugger','bullshit','butt', 
+		'cad','cock|[a-z]+cock|cock[a-z]+','crap','cunt', 
+		'damn','dang','darn','douchebag','dick|dick[a-z]+','duffer','dumd', 
+		'faggot|fag','fool','freak|freaking ','fuck|[a-z]+fucker|fucking| fucked',
+		'gay',
+		'hoe','homo','heck',
+		'idiot',
+		'jerk|jerking',
+		'knob[a-z]+',
+		'loser',
+		'motherf[a-z]+',
+		'nerd','nigger',
+		'pillock','plonker','poo|poop','prat','prick','pussy',
+		'rotter', 
+		'shit|shits|[a-z]+shit|shit[a-z]+|[a-z]+shit[a-z]+','slut','stupid','suck|sucker','swive|swivel','swine', 
+		'twat',
+		'wanker','whore'
 	);
 	 
 	/**
@@ -79,7 +104,8 @@ class Censure {
 	 public static function replace ( $string ) {
 		$words = explode(' ',$string);
 		foreach ($words as $key=>$w) {
-			foreach (self::$patterns as $p) {
+			$patterns = self::getPatterns($w);
+			foreach ($patterns as $p) {
 				$pattern = self::prepare($p);
 				if(preg_match($pattern, $w)) {
 					$words[$key] = preg_replace(self::prepare('[\w\-]+'), self::REPLACEMENT, $words[$key]) ;
@@ -96,6 +122,7 @@ class Censure {
 	 * @param mixed  $data,... unlimited number of arguments to match indexes in $_POST to clean
 	 * @return void
 	 */
+
 	public static function cleanPost () {
 		$data = func_get_args();
 		foreach($data as $index) {
@@ -111,8 +138,10 @@ class Censure {
 	 * @param string $string - original text
 	 * @return boolean - is there any abusive words in our string
 	 */
+
 	public static function is_bad ( $string ) {
-		foreach (self::$patterns as $p) {
+		$patterns = self::getPatterns($string);
+		foreach ($patterns as $p) {
 			if(preg_match(self::prepare($p),$string)) return true;
 		}
 		return false; 
@@ -120,6 +149,16 @@ class Censure {
 
 	private static function prepare ( $pattern ) {
 		return '/'.$pattern.'/iu';
+	}
+
+	private static function getPatterns( $string ) {
+			if (preg_match(self::prepare("[а-я]+"), $string)){
+				return self::$patterns_ru;
+			} else if (preg_match(self::prepare("[a-z]+"), $string)){
+				return self::$patterns_en;
+			} else {
+				return array();
+			}			
 	}
 
 }
