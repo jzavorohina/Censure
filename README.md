@@ -1,9 +1,10 @@
 # CENSURE CLASS
-Dirty words - filter. Filter out vulgar, obscene, profane words in Russian/English texts.
+Dirty words - filter.  
+Filter out vulgar, obscene, profane words in Russian/English texts.
 
 ### Key features:
-Find profanity (in Russian and English texts) and hide it with *** symbols.
-Find profanity (in Russian texts) and replace it with normative vocabulary.
+ - Find profanity (in Russian and English texts) and hide it with *** symbols.  
+ - Find profanity (in Russian texts) and replace it with normative vocabulary.
 
 ### Some examples:
 ```php

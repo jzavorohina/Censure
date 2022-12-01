@@ -17,9 +17,10 @@
  * Censure::is_bad('Original text with abusive words'); // return: bool
  * Censure::replace('Original text with abusive words'); // return: string (text without abusive words)
  * Censure::cleanPost('Unlimited number of arguments to match indexes in $_POST to clean'); // return: void
+ * Censure::fix('Original phrase with abusive words'); // return: string (fixed text)
  *
  * @author jzavorohina@yandex.ru
- * @version 1.1.0
+ * @version 1.2.0
  * 
  */
 class Censure
