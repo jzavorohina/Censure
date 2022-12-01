@@ -40,11 +40,11 @@ test('0 Backward compatibility', 'Ass', true, '***');
 test('1 A', 
 'Ass / arse, asshole / arsehole', true, '*** / ***, *** / ***');
 
-// 2 B (bastard, berk, bitch / bitching, blighter, blimey, bollocks, bugger, bullshit, butt)
+// 2 B (Bastard, berk, bitch / bitching, blighter, blimey, bollocks, bugger, bullshit, butt)
 // is_bad: bool(true)
 // replace: ***, ***, *** / ***, ***, ***, ***, ***, ***, *** 
 test('2 B', 
-'bastard, berk, bitch / bitching, blighter, blimey, bollocks, bugger, bullshit, butt', true, '***, ***, *** / ***, ***, ***, ***, ***, ***, ***');
+'Bastard, berk, bitch / bitching, blighter, blimey, bollocks, bugger, bullshit, butt', true, '***, ***, *** / ***, ***, ***, ***, ***, ***, ***');
 
 // 3 C (Cad, cock / poppycock / cocksucker, crap, cunt)
 // is_bad: bool(true)
@@ -67,11 +67,11 @@ test('5 F',
 'Faggot / fag, fool, freak / freaking, fuck / motherfucker / fucking / fucked', true,
 '*** / ***, ***, *** / ***, *** / *** / *** / ***');
 
-// 6 G (gay)
+// 6 G (Gay)
 // is_bad: bool(true)
 // replace: ***
 test('6 G', 
-'gay', true, '***');
+'Gay', true, '***');
 
 // 7 H (Hoe, homo, heck)
 // is_bad: bool(true)
@@ -90,11 +90,11 @@ test('8 I',
 // replace: *** / ***
 test('9 J', 'Jerk / jerking', true, '*** / ***');
 
-// 10 K (knobend)
+// 10 K (Knobend)
 // is_bad: bool(true)
 // replace: ***
 test('10 K', 
-'knobend', true, '***');
+'Knobend', true, '***');
 
 // 11 L (Loser)
 // is_bad: bool(true)
