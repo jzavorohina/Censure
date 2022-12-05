@@ -1,6 +1,6 @@
-# CENSURE CLASS
-Dirty words - filter.  
-Filter out vulgar, obscene, profane words in Russian/English texts.
+# CENSURE class
+Dirty words - filter.   
+A PHP class to filter out dirty, vulgar, obscene, profane words in russian or english texts.
 
 ### Key features:
  - Find profanity (in Russian and English texts) and hide it with *** symbols.  
