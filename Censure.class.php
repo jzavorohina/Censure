@@ -20,9 +20,9 @@
  * Censure::fix('Original phrase with abusive words'); // return: string (fixed text)
  *
  * @author jzavorohina@yandex.ru
- * @version 1.2.0
  * 
  */
+
 class Censure
 {
 
@@ -104,6 +104,7 @@ class Censure
 
 	/**
 	 * Set an array of english abusive words
+	 * 
 	 */
 	public static $patterns_en = array(
 		'ass|arse', 'asshole|arsehole',
@@ -131,6 +132,7 @@ class Censure
 	 *
 	 * @param string $string - original text
 	 * @return boolean - is there any abusive words in our string
+	 * @todo add a count of the number of bad words in a sentence
 	 */
 	public static function is_bad($string)
 	{

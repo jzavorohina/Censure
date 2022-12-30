@@ -2,32 +2,32 @@
     "name": "jzavorohina/censure",
     "description": "Dirty russian/english words filter",
     "type": "library",
-    "version": "1.2.0", 
+    "version": "1.2.1", 
     "keywords": [
         "censure",
         "filter",
-        "profanity-words",
-        "profane-words",
-        "vulgar-words",
-        "obscene-words",
-        "profane-words-in-texts",
-        "vulgar-words-in-texts",
-        "obscene-words-in-texts",
-        "censure-filter",
-        "curse-words-filter",
-        "dirty-words-filter",
-        "obscene-language-filter",
-        "indecent-language-filter",
-        "dirty-russian-words-filter",
-        "dirty-english-words-filter",
-        "bad-russian-words-filter",
-        "bad-english-words-filter",
-        "russian-swear-words-filter",
-        "english-swear-words-filter",
-        "swearwords-filter",
-        "words-replacer",
-        "word-replacer",
-        "word-replacement",
+        "profanity words",
+        "profane words",
+        "vulgar words",
+        "obscene words",
+        "profane words in texts",
+        "vulgar words in texts",
+        "obscene words in texts",
+        "censure filter",
+        "curse words filter",
+        "dirty words filter",
+        "obscene language filter",
+        "indecent language filter",
+        "dirty russian words filter",
+        "dirty english words filter",
+        "bad russian words filter",
+        "bad english words filter",
+        "russian swear words filter",
+        "english swear words filter",
+        "swearwords filter",
+        "words replacer",
+        "word replacer",
+        "word replacement",
         "replacer"
     ],
     "homepage": "https://github.com/jzavorohina/censure",
@@ -35,7 +35,7 @@
     "authors": [
         {
             "name": "Julia Zavorohina",
-            "email": "jzavorohina@gmail.com",
+            "email": "jzavorohina@yandex.ru",
             "role": "lead"
         }
     ],
@@ -46,9 +46,16 @@
         "php": ">=5.0.0"
     },
     "require-dev": {
+        "php": ">=7.3.0",
         "phpunit/phpunit": "^9"
     },
     "autoload": {
-        "files": ["Censure.class.php"]
+        "files": [
+            "Censure.class.php",
+            "tests/CensureReplaceTest.php",
+            "tests/CensureRuTest.php",
+            "tests/CensureEnTest.php",
+            "tests/CensureMixTest.php"
+        ]
     }
 }
