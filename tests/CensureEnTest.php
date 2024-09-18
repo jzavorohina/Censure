@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Censure\Censure;
 require_once("Censure.class.php");
 
 
