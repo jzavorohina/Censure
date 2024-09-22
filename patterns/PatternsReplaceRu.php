@@ -9,6 +9,7 @@ class PatternsReplaceRu
      * 
      * @todo add declensions by numbers, genders and cases (add preposition for cases like: 'о пизде' => 'женском половом органе',)
      * @todo add more pairs of words to the array
+     * @todo add replacement function for combination of obscene words
      * @todo add an algorithm for commented out words with multiple meanings
      * @todo check censorship of words for replacement
      * 
@@ -43,8 +44,8 @@ class PatternsReplaceRu
         'пиздобратия' => 'пренебрежительно о какой-то группе',
         'пиздобратья' => 'мужчины, вступающие в половые отношения с одной женщиной',
         'пиздовато' => 'плохо',
-        'пиздоватый' => 'недалекий / никчёмный',
-        'пиздоватенький' => 'плохонький / хилый',
+        'пиздоватый' => 'недалекий',
+        'пиздоватенький' => 'плохонький',
         'пиздовать' => 'идти, уходить',
         'пиздоёбство' => 'нудное занятие',
         'пиздоголик' => 'помешанный на половом акте, на женском половом органе',
@@ -892,7 +893,7 @@ class PatternsReplaceRu
         'распиздовать' => 'разогнать',
         'распиздовываться' => 'расставаться',
         'распиздовывать' => 'разгонять',
-        'распиздохаться' => 'nоссориться',
+        'распиздохаться' => 'поссориться',
         'распиздохать' => 'разбить',
         'распиздохиваться' => 'рассориваться',
         'распиздохивать' => 'разбивать',
