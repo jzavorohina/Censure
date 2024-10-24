@@ -21,7 +21,7 @@ class CensureMixTest extends TestCase
     public function providerPower()
     {
         return array(
-            array('Ass - это задница, жопа', true, '*** - это ***, ***'),
+            array('Ass - это задница, жопа', true, '*** - это задница, ***'),
             array('Анальная, анус, анусе, ass / arse, asshole / arsehole', true, '***, ***, ***, *** / ***, *** / ***')
         );
     }

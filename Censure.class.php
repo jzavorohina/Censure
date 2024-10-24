@@ -27,7 +27,7 @@ use Censure\patterns\PatternsReplaceRu;
  *
  * @author jzavorohina@yandex.ru
  * 
- * List of replacements - by the book "Русский мат.Толковый словарь." Составитель Ахметова Т.В., Москва "КОЛОКОЛ-ПРЕСС", 2000
+ * List of replacements partly - by the book "Русский мат.Толковый словарь." Составитель Ахметова Т.В., Москва "КОЛОКОЛ-ПРЕСС", 2000
  * 
  */
 
@@ -66,6 +66,7 @@ class Censure
 			foreach ($patterns as $p) {
 				$pattern = self::prepare($p);
 				if (preg_match($pattern, $w)) {
+					echo "test log : " . $words[$key] . " - " . $pattern . " \n\r";
 					$words[$key] = preg_replace(self::prepare('[\w\-]+'), self::REPLACEMENT, $words[$key]);
 					break;
 				}
