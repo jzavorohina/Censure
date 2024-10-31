@@ -2,7 +2,7 @@
     "name": "jzavorohina/censure",
     "description": "Dirty russian/english words filter",
     "type": "library",
-    "version": "1.4.0", 
+    "version": "1.5.0", 
     "keywords": [
         "censure",
         "filter",

@@ -41,6 +41,7 @@ class Censure
 	 * @param string $string - original text
 	 * @return boolean - is there any abusive words in our string
 	 * @todo add a count of the number of bad words in a sentence
+	 * @todo add special mode for replace...'all the other very bad words' => '***' for 6+ kid children users / for the youngest readers
 	 */
 	public static function is_bad($string)
 	{
@@ -66,7 +67,7 @@ class Censure
 			foreach ($patterns as $p) {
 				$pattern = self::prepare($p);
 				if (preg_match($pattern, $w)) {
-					echo "test log : " . $words[$key] . " - " . $pattern . " \n\r";
+					// echo "test log : " . $words[$key] . " - " . $pattern . " \n\r";
 					$words[$key] = preg_replace(self::prepare('[\w\-]+'), self::REPLACEMENT, $words[$key]);
 					break;
 				}

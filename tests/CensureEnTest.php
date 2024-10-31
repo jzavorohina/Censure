@@ -2,6 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use Censure\Censure;
+use Censure\patterns\PatternsEn;
 require_once("Censure.class.php");
 
 
@@ -21,26 +22,25 @@ class CensureEnTest extends TestCase
 
     public function providerPower()
     {
-        return array(
-            array('Ass', true, '***'),
-            array('Ass / arse, asshole / arsehole', true, '*** / ***, *** / ***'),
-            array('Bastard, berk, bitch / bitching, blighter, blimey, bollocks, bugger, bullshit, butt', true, '***, ***, *** / ***, ***, ***, ***, ***, ***, ***'),
-            array('Cad, cock / poppycock / cocksucker, crap, cunt', true, '***, *** / *** / ***, ***, ***'),
-            array('Damn, dang, darn, douchebag, dick / dickhead, duffer, dumd', true, '***, ***, ***, ***, *** / ***, ***, ***'),
-            array('Faggot / fag, fool, freak / freaking, fuck / motherfucker / fucking / fucked', true, '*** / ***, ***, *** / ***, *** / *** / *** / ***'),
-            array('Gay', true, '***'),
-            array('Hoe, homo, heck', true, '***, ***, ***'),
-            array('Idiot', true, '***'),
-            array('Jerk / jerking', true, '*** / ***'),
-            array('Knobend', true, '***'),
-            array('Loser', true, '***'),
-            array('Motherfucker', true, '***'),
-            array('Nerd, nigger', true, '***, ***'),
-            array('Pillock, plonker, poo / poop, prat, prick, pussy', true, '***, ***, *** / ***, ***, ***, ***'),
-            array('Rotter', true, '***'),
-            array('Shit / shits / bullshit / shitting / ballshitter, slut, stupid, suck / sucker, swive / swivel, swine', true, '*** / *** / *** / *** / ***, ***, ***, *** / ***, *** / ***, ***'),
-            array('Twat', true, '***'),
-            array('Wanker, whore', true, '***, ***')
-        );
+        $testLines = [];
+        $testPatterns = PatternsEn::$patterns;
+
+        foreach ($testPatterns as $p) {
+            $testEnding = 'es';
+            $replace = ', ';
+            $a = preg_replace('/\[a-z]\+|[A-Z]\+/iu', $testEnding, $p);
+            $testLine = preg_replace('/\|/iu', $replace, $a);
+            $words = explode($replace, $testLine);
+            $expectedArr = [];
+
+            for ($a = 0; $a < count($words); $a++) {
+                array_push($expectedArr, '***');
+            }
+            $expected = implode($replace, $expectedArr);
+
+            array_push($testLines, array($testLine, true, $expected));
+            echo "test log testLine: " . $testLine . " / expected: " . $expected ." \n\r";
+        }
+        return $testLines;
     }
 }
