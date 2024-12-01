@@ -1,5 +1,5 @@
 # CENSURE class
-Dirty words - filter.   
+Dirty words - filter. 18+ 
 A PHP class to filter out dirty, vulgar, obscene, profane words in russian or english texts.
 
 ### Key features:
